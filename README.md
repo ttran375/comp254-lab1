@@ -52,7 +52,81 @@ public class Main {
 }
 ```
 
+To count the primitive operations in the given code, we'll identify the number of operations performed in each part of the code. Primitive operations include assignments, comparisons, arithmetic operations, and method calls like `System.out.println`.
 
+Let's break it down step by step.
+
+### Code Analysis
+
+```java
+public static void main(String[] args) {
+    int n = 1000; // 1 assignment
+    System.out.println("Hey - your input is: " + n); // 1 concatenation, 1 method call
+    System.out.println("Hmm.. I'm doing more stuff with: " + n); // 1 concatenation, 1 method call
+    System.out.println("And more: " + n); // 1 concatenation, 1 method call
+
+    for (int i = 1; i < n; i = i * 2) { // Loop with initialization, comparison, multiplication, assignment
+        System.out.println("Hey - I'm busy looking at: " + i); // 1 concatenation, 1 method call
+    }
+
+    for (int i = 1; i <= n; i++) { // Outer loop with initialization, comparison, increment, assignment
+        for (int j = 1; j < n; j = j * 2) { // Inner loop with initialization, comparison, multiplication, assignment
+            System.out.println("Hey - I'm busy looking at: " + i + " and " + j); // 2 concatenations, 1 method call
+        }
+    }
+}
+```
+
+### Detailed Primitive Operation Count
+
+1. **Initialization and Assignments:**
+   - `int n = 1000;` : 1 operation
+   - `for (int i = 1; i < n; i = i * 2) {` : 1 initialization
+   - `for (int i = 1; i <= n; i++) {` : 1 initialization
+   - `for (int j = 1; j < n; j = j * 2) {` : 1 initialization
+
+2. **Comparisons:**
+   - `i < n` in the first loop: \(\log_2 n\) comparisons
+   - `i <= n` in the outer loop: \(n\) comparisons
+   - `j < n` in the inner loop: \(n \times \log_2 n\) comparisons
+
+3. **Increment/Multiplications and Assignments:**
+   - `i = i * 2` in the first loop: \(\log_2 n\) multiplications, \(\log_2 n\) assignments
+   - `i++` in the outer loop: \(n\) increments, \(n\) assignments
+   - `j = j * 2` in the inner loop: \(n \times \log_2 n\) multiplications, \(n \times \log_2 n\) assignments
+
+4. **Method Calls and String Concatenations:**
+   - `System.out.println("Hey - your input is: " + n);`: 1 concatenation, 1 method call
+   - `System.out.println("Hmm.. I'm doing more stuff with: " + n);`: 1 concatenation, 1 method call
+   - `System.out.println("And more: " + n);`: 1 concatenation, 1 method call
+   - `System.out.println("Hey - I'm busy looking at: " + i);` inside first loop: \(\log_2 n\) concatenations, \(\log_2 n\) method calls
+   - `System.out.println("Hey - I'm busy looking at: " + i + " and " + j);` inside nested loop: \(2 \times n \times \log_2 n\) concatenations, \(n \times \log_2 n\) method calls
+
+### Total Primitive Operations
+
+Summing up all the operations:
+
+1. **Assignments:**
+   - $1 + 1 + 1 + \log_2 n + n + n \times \log_2 n + \log_2 n = 2 + 2\log_2 n + n + n \times \log_2 n$
+
+2. **Comparisons:**
+   - $\log_2 n + n + n \times \log_2 n = n + 2n \log_2 n$
+
+3. **Increments/Multiplications:**
+   - $\log_2 n + \log_2 n + n + n \times \log_2 n = n + 3\log_2 n + n \times \log_2 n$
+
+4. **Concatenations and Method Calls:**
+   - $1 + 1 + 1 + \log_2 n + 2 \times n \times \log_2 n + n \times \log_2 n = 3 + 3 \times \log_2 n + 3 \times n \times \log_2 n$
+
+Combining all types of operations:
+
+\[ 2 + 2 \log_2 n + n + n \times \log_2 n + n + 2 n \log_2 n + n + 3 \log_2 n + n \times \log_2 n + 3 + 3 \log_2 n + 3 \times n \times \log_2 n \]
+
+Simplifying, we get:
+
+\[ \text{Total Operations} = \mathcal{O}(n \log n) \]
+
+Therefore, the total number of primitive operations is dominated by $n \log n$, indicating an overall time complexity of $\mathcal{O}(n \log n)$.
 
 ## Exercise 2: Big O descriptions
 
