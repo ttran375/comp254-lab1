@@ -91,24 +91,6 @@ public static void main(String[] args) {
     - Printing: `System.out.println(...)` (log₂(n) method calls)
     - Total for loop body: 3 * log₂(n)
 
-3. **Second `for` Loop:**
-    ```java
-    for (int i = 1; i <= n; i++) {
-        for (int j = 1; j < n; j = j * 2) {
-            System.out.println("Hey - I'm busy looking at: " + i + " and " + j);
-        }
-    }
-    ```
-    - Outer loop initialization: `int i = 1;` (1 assignment)
-    - Outer loop condition check: `i <= n` (n times)
-    - Outer loop update: `i++` (n times)
-    - Inner loop initialization: `int j = 1;` (n times)
-    - Inner loop condition check: `j < n` (n * log₂(n) times)
-    - Inner loop update: `j = j * 2` (n * log₂(n) times)
-    - Printing: `System.out.println(...)` (n * log₂(n) method calls)
-    - Total for inner loop: 4 * n * log₂(n)
-    - Total for outer loop: n (for initialization, condition checks, and updates)
-
 ### `prefixAverage1` Method
 ```java
 public static double[] prefixAverage1(double[] x) {
