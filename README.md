@@ -3,7 +3,7 @@
 This document provides the necessary instructions for completing the
 Week 4 lab exercises.
 
-**Exercise 1: Counting Primitive Operations**
+## Exercise 1: Counting Primitive Operations◊
 
 Count the primitive operations for the following algorithms/methods:
 
@@ -74,108 +74,8 @@ public static void main(String[] args) {
 }
 ```
 
-1. **Initialization and Printing:**
-    - `int n = 1000;` (1 assignment)
-    - `System.out.println(...)` (3 method calls)
-    - Total: 4 primitive operations
 
-2. **First `for` Loop:**
-    ```java
-    for (int i = 1; i < n; i = i * 2) {
-        System.out.println("Hey - I'm busy looking at: " + i);
-    }
-    ```
-    - Initialization: `int i = 1;` (1 assignment)
-    - Condition check: `i < n` (log₂(n) times)
-    - Update: `i = i * 2` (log₂(n) times)
-    - Printing: `System.out.println(...)` (log₂(n) method calls)
-    - Total for loop body: 3 * log₂(n)
-
-### `prefixAverage1` Method
-```java
-public static double[] prefixAverage1(double[] x) {
-    int n = x.length;
-    double[] a = new double[n]; // filled with zeros by default
-    for (int j = 0; j < n; j++) {
-        double total = 0; // begin computing x[0] + ... + x[j]
-        for (int i = 0; i <= j; i++) {
-            total += x[i];
-        }
-        a[j] = total / (j + 1); // record the average
-    }
-    return a;
-}
-```
-
-1. **Initialization:**
-    - `int n = x.length;` (1 assignment)
-    - `double[] a = new double[n];` (1 array creation)
-
-2. **Outer `for` Loop:**
-    - Initialization: `int j = 0;` (1 assignment)
-    - Condition check: `j < n` (n times)
-    - Update: `j++` (n times)
-    - Inner loop body (n times):
-
-3. **Inner `for` Loop:**
-    - Initialization: `int i = 0;` (n times)
-    - Condition check: `i <= j` (n(n+1)/2 times)
-    - Update: `i++` (n(n+1)/2 times)
-    - Addition: `total += x[i];` (n(n+1)/2 times)
-    - Total for inner loop: 4 * n(n+1)/2 = 2n(n+1)
-
-4. **Recording the Average:**
-    - `a[j] = total / (j + 1);` (n times)
-    - Total for outer loop: 3n + 2n(n+1) = 2n² + 5n
-
-### `prefixAverage2` Method
-```java
-public static double[] prefixAverage2(double[] x) {
-    int n = x.length;
-    double[] a = new double[n]; // filled with zeros by default
-    double total = 0; // compute prefix sum as x[0] + x[1] + ...
-    for (int j = 0; j < n; j++) {
-        total += x[j]; // update prefix sum to include x[j]
-        a[j] = total / (j + 1); // compute average based on current sum
-    }
-    return a;
-}
-```
-
-1. **Initialization:**
-    - `int n = x.length;` (1 assignment)
-    - `double[] a = new double[n];` (1 array creation)
-    - `double total = 0;` (1 assignment)
-
-2. **`for` Loop:**
-    - Initialization: `int j = 0;` (1 assignment)
-    - Condition check: `j < n` (n times)
-    - Update: `j++` (n times)
-    - Addition: `total += x[j];` (n times)
-    - Division and assignment: `a[j] = total / (j + 1);` (n times)
-    - Total for loop body: 4n
-
-In summary:
-- `main` method: `4 + 3 * log₂(n) + 4 * n * log₂(n) + n`
-- `prefixAverage1` method: `2n² + 5n`
-- `prefixAverage2` method: `4n`
-
-For n = 1000, the counts are as follows:
-- `main` method: `4 + 3 * log₂(1000) + 4 * 1000 * log₂(1000) + 1000`
-- `prefixAverage1` method: `2 * 1000² + 5 * 1000`
-- `prefixAverage2` method: `4 * 1000`
-
-This simplifies to:
-- `main` method: `4 + 3 * 9.97 + 4 * 1000 * 9.97 + 1000` ≈ `4 + 29.91 + 39880 + 1000` ≈ `40884`
-- `prefixAverage1` method: `2 * 1000000 + 5000` = `2005000`
-- `prefixAverage2` method: `4000`
-
-So, the primitive operation counts for n = 1000 are approximately:
-- `main` method: 40884
-- `prefixAverage1` method: 2005000
-- `prefixAverage2` method: 4000
-- 
-**Exercise 2: Big O descriptions**
+## Exercise 2: Big O descriptions◊
 
 **Describe the following Big O notations for algorithm runtimes:**
 
@@ -195,7 +95,7 @@ So, the primitive operation counts for n = 1000 are approximately:
 
 **O(n!) -**
 
-**Exercise 3: Big O Examples:**
+## Exercise 3: Big O Examples◊
 
 Recall the definition: f(n) \<= c\* g(n) for n \>=n<sub>0</sub>
 
@@ -213,7 +113,7 @@ Do the same for the following functions:
 
 4.  2*n*<sup>4</sup> +7*n*<sup>3</sup>- 5*n*<sup>2</sup> + 2*n* - 7
 
-**Exercise 4: Asymptotic Analysis and Big O notation**
+## Exercise 4: Asymptotic Analysis and Big O notation◊
 
 **What is the growth rate for the following functions? Express it in
 terms of Big Oh notation:**
@@ -234,7 +134,7 @@ terms of Big Oh notation:**
 
 8.  20n3 +10nlog n+5 is O(n3)
 
-**Exercise 5: Asymptotic growth rate**
+## Exercise 5: Asymptotic growth rate◊
 
 Order the following functions by asymptotic growth rate.
 
