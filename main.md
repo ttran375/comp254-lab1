@@ -102,14 +102,14 @@ public static void main(String[] args) {
    }
    ```
    - Outer loop initialization: `int i = 1;` (1 operation)
-   - Outer loop condition check `i <= n` is executed \(n + 1\) times.
-   - Inner loop initialization: `int j = 1;` (executed \(n\) times)
-   - Inner loop condition check `j < n` is executed \(n \times \log_2 n\) times.
-   - Inside the inner loop: `System.out.println("Hey - I'm busy looking at: " + i + " and " + j);` (1 operation for concatenation + 1 for print, executed \(n \times \log_2 n\) times)
-   - Inner loop update: `j = j * 2;` (executed \(n \times (\log_2 n - 1)\) times)
-   - Outer loop update: `i++` (executed \(n\) times)
+   - Outer loop condition check `i <= n` is executed $n + 1$ times.
+   - Inner loop initialization: `int j = 1;` (executed $n$ times)
+   - Inner loop condition check `j < n` is executed $n \times \log_2 n$ times.
+   - Inside the inner loop: `System.out.println("Hey - I'm busy looking at: " + i + " and " + j);` (1 operation for concatenation + 1 for print, executed $n \times \log_2 n$ times)
+   - Inner loop update: `j = j * 2;` (executed $n \times (\log_2 n - 1)$ times)
+   - Outer loop update: `i++` (executed $n$ times)
 
-   Total: \(1 + (n + 1) \times 1 + n \times (\log_2 n \times 2 + (\log_2 n - 1) \times 1) = 1 + (n + 1) + n \times (2 \log_2 n + \log_2 n - 1) = 2 + n + 3n \log_2 n - n = 2 + 3n \log_2 n\) operations
+   Total: $1 + (n + 1) \times 1 + n \times (\log_2 n \times 2 + (\log_2 n - 1) \times 1) = 1 + (n + 1) + n \times (2 \log_2 n + \log_2 n - 1) = 2 + n + 3n \log_2 n - n = 2 + 3n \log_2 n$ operations
 
 ### `prefixAverage1` Method
 
