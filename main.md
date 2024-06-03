@@ -28,24 +28,24 @@ public class Main {
 
     public static double[] prefixAverage1(double[] x) {
         int n = x.length;
-        double[] a = new double[n]; // filled with zeros by default
+        double[] a = new double[n];
         for (int j = 0; j < n; j++) {
-            double total = 0; // begin computing x[0] + ... + x[j]
+            double total = 0;
             for (int i = 0; i <= j; i++) {
                 total += x[i];
             }
-            a[j] = total / (j + 1); // record the average
+            a[j] = total / (j + 1);
         }
         return a;
     }
 
     public static double[] prefixAverage2(double[] x) {
         int n = x.length;
-        double[] a = new double[n]; // filled with zeros by default
-        double total = 0; // compute prefix sum as x[0] + x[1] + ...
+        double[] a = new double[n];
+        double total = 0;
         for (int j = 0; j < n; j++) {
-            total += x[j]; // update prefix sum to include x[j]
-            a[j] = total / (j + 1); // compute average based on current sum
+            total += x[j];
+            a[j] = total / (j + 1);
         }
         return a;
     }
