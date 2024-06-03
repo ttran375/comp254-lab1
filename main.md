@@ -88,11 +88,10 @@ public static void main(String[] args) {
    }
    ```
    - Initialization: `int i = 1;` (1 operation)
-   - Loop condition check `i < n` is executed $\log_2 n$ times.
-   - Inside the loop: `System.out.println("Hey - I'm busy looking at: " + i);` (1 operation for concatenation + 1 for print, executed $\log_2 n$ times)
+   - Loop condition check `i < n` is executed $\log_2 n$ times. Inside the loop: `System.out.println("Hey - I'm busy looking at: " + i);` (1 operation for concatenation + 1 for print, executed $\log_2 n$ times)
    - Update: `i = i * 2;` (1 operation, executed $\log_2 n - 1$ times)
 
-   Total: $1 + \log_2 n \times (1 + 2) + (\log_2 n - 1) = 1 + 3\log_2 n - 1 = 3\log_2 n$ operations
+   Total: $1 + \log_2 n \times (1 + 1 + 1) + (\log_2 n - 1) = 1 + 3\log_2 n - 1 = 3\log_2 n$ operations
 
 3. **Second for loop:**
    ```java
