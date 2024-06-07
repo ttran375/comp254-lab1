@@ -7,167 +7,103 @@ Week 4 lab exercises.
 
 Count the primitive operations for the following algorithms/methods:
 
-``` java
-public class Main {
-    public static void main(String[] args) {
-        int n = 1000;
-        System.out.println("Hey - your input is: " + n);
-        System.out.println("Hmm.. I'm doing more stuff with: " + n);
-        System.out.println("And more: " + n);
+```python
+def main():
+    n = 1000
+    print("Hey - your input is:", n)
+    print("Hmm.. I'm doing more stuff with:", n)
+    print("And more:", n)
 
-        for (int i = 1; i < n; i = i * 2) {
-            System.out.println("Hey - I'm busy looking at: " + i);
-        }
+    i = 1
+    while i < n:
+        print("Hey - I'm busy looking at:", i)
+        i *= 2
 
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j < n; j = j * 2) {
-                System.out.println("Hey - I'm busy looking at: " + i + " and " + j);
-            }
-        }
-    }
-
-    public static double[] prefixAverage1(double[] x) {
-        int n = x.length;
-        double[] a = new double[n];
-        for (int j = 0; j < n; j++) {
-            double total = 0;
-            for (int i = 0; i <= j; i++) {
-                total += x[i];
-            }
-            a[j] = total / (j + 1);
-        }
-        return a;
-    }
-
-    public static double[] prefixAverage2(double[] x) {
-        int n = x.length;
-        double[] a = new double[n];
-        double total = 0;
-        for (int j = 0; j < n; j++) {
-            total += x[j];
-            a[j] = total / (j + 1);
-        }
-        return a;
-    }
-}
+    for i in range(1, n + 1):
+        j = 1
+        while j < n:
+            print("Hey - I'm busy looking at:", i, "and", j)
+            j *= 2
 ```
 
-### Main Method
+### Main method
 
-```java
-public static void main(String[] args) {
-    int n = 1000;
-    System.out.println("Hey - your input is: " + n);
-    System.out.println("Hmm.. I'm doing more stuff with: " + n);
-    System.out.println("And more: " + n);
+- Initialization: 4 operations (1 assignment + 3 prints)
+- First While Loop: $3 \times 10 = 30$ operations (10 comparisons + 10 prints + 10 assignments)
+- For Loop and Nested While Loop:
+  - For Loop: $1000$ iterations
+  - Nested While Loop: $1000 \times 10 = 10000$ operations (10000 comparisons + 10000 prints + 10000 assignments)
 
-    for (int i = 1; i < n; i = i * 2) {
-        System.out.println("Hey - I'm busy looking at: " + i);
-    }
+The total number of primitive operations is $4 + 30 + 31000 = 31034$.
 
-    for (int i = 1; i <= n; i++) {
-        for (int j = 1; j < n; j = j * 2) {
-            System.out.println("Hey - I'm busy looking at: " + i + " and " + j);
-        }
-    }
-}
+### prefix_average1
+
+```python
+def prefix_average1(x):
+    n = len(x)  # 1 assignment
+    a = [0] * n  # 1 assignment + n assignments (to initialize the list)
+    for j in range(n):  # Outer loop runs n times
+        total = 0  # 1 assignment for each j
+        for i in range(j + 1):  # Inner loop runs j+1 times
+            total += x[i]  # 1 addition + 1 list access per iteration of inner loop
+        a[j] = total / (j + 1)  # 1 division + 1 assignment per iteration of outer loop
+    return a  # 1 return statement
 ```
 
-1. **Variable initialization and print statements:**
-   - `int n = 1000;` (1 operation)
-   - `System.out.println("Hey - your input is: " + n);` (1 operation for concatenation + 1 for print)
-   - `System.out.println("Hmm.. I'm doing more stuff with: " + n);` (1 operation for concatenation + 1 for print)
-   - `System.out.println("And more: " + n);` (1 operation for concatenation + 1 for print)
-
-   Total: $1 + 2 \times 3 = 7$ operations
-
-2. **First for loop:**
-   ```java
-   for (int i = 1; i < n; i = i * 2) {
-       System.out.println("Hey - I'm busy looking at: " + i);
-   }
-   ```
-   - Initialization: `int i = 1;` (1 operation)
-   - Loop condition check `i < n` is executed $\log_2 n$ times. Inside the loop: `System.out.println("Hey - I'm busy looking at: " + i);` (1 operation for concatenation + 1 for print, executed $\log_2 n$ times)
-   - Update: `i = i * 2;` (1 operation, executed $\log_2 n - 1$ times)
-
-   Total: $1 + \log_2 n \times (1 + 1 + 1) + (\log_2 n - 1) = 1 + 3\log_2 n - 1 = 3\log_2 n$ operations
-
-3. **Second for loop:**
-   ```java
-   for (int i = 1; i <= n; i++) {
-       for (int j = 1; j < n; j = j * 2) {
-           System.out.println("Hey - I'm busy looking at: " + i + " and " + j);
-       }
-   }
-   ```
-   - Outer loop initialization: `int i = 1;` (1 operation)
-   - Outer loop condition check `i <= n` is executed $n + 1$ times.
-   - Inner loop initialization: `int j = 1;` (executed $n$ times)
-   - Inner loop condition check `j < n` is executed $n \times \log_2 n$ times.
-   - Inside the inner loop: `System.out.println("Hey - I'm busy looking at: " + i + " and " + j);` (1 operation for concatenation + 1 for print, executed $n \times \log_2 n$ times)
-   - Inner loop update: `j = j * 2;` (executed $n \times (\log_2 n - 1)$ times)
-   - Outer loop update: `i++` (executed $n$ times)
-
-   Total: $1 + (n + 1) \times 1 + n \times (\log_2 n \times 2 + (\log_2 n - 1) \times 1) = 1 + (n + 1) + n \times (2 \log_2 n + \log_2 n - 1) = 2 + n + 3n \log_2 n - n = 2 + 3n \log_2 n$ operations
-
-### `prefixAverage1` Method
-
-```java
-public static double[] prefixAverage1(double[] x) {
-    int n = x.length;
-    double[] a = new double[n];
-    for (int j = 0; j < n; j++) {
-        double total = 0;
-        for (int i = 0; i <= j; i++) {
-            total += x[i];
-        }
-        a[j] = total / (j + 1);
-    }
-    return a;
-}
-```
+### Detailed Counting
 
 1. **Initialization:**
-   - `int n = x.length;` (1 operation)
-   - `double[] a = new double[n];` (1 operation)
+   - `n = len(x)`: 1 assignment
+   - `a = [0] * n`: 1 assignment for list creation + n assignments to initialize the list
 
-2. **Outer loop:**
-   - Initialization: `int j = 0;` (1 operation)
-   - Condition check `j < n` is executed \(n + 1\) times.
-   - Initialization `double total = 0;` is executed \(n\) times.
-   - Inner loop: condition check `i <= j` is executed \(\frac{n(n + 1)}{2}\) times.
-   - Inside the inner loop: `total += x[i];` is executed \(\frac{n(n + 1)}{2}\) times.
-   - Outside the inner loop: `a[j] = total / (j + 1);` is executed \(n\) times.
-   - Update: `j++` (executed \(n\) times)
+2. **Outer Loop (`for j in range(n)`):**
+   - Runs `n` times:
+     - `total = 0`: 1 assignment per iteration (total of n assignments)
 
-   Total: \(1 + 1 + (1 + n + 1) + n + \frac{n(n + 1)}{2} \times 1 + \frac{n(n + 1)}{2} + n \times 1 + n = 2 + 2n + 1 + \frac{n^2 + n}{2} + \frac{n^2 + n}{2} = 3 + 2n + n^2 + n = n^2 + 3n + 3\) operations
+3. **Inner Loop (`for i in range(j + 1)`):**
+   - Runs $\sum_{j=0}^{n-1} (j+1)$ times:
+     - `total += x[i]`: 1 addition + 1 list access per iteration
 
-### `prefixAverage2` Method
+4. **Assignment and Division (`a[j] = total / (j + 1)`):**
+   - Runs `n` times:
+     - 1 division + 1 assignment per iteration
 
-```java
-public static double[] prefixAverage2(double[] x) {
-    int n = x.length;
-    double[] a = new double[n];
-    double total = 0;
-    for (int j = 0; j < n; j++) {
-        total += x[j];
-        a[j] = total / (j + 1);
-    }
-    return a;
-}
-```
+5. **Return Statement:**
+   - `return a`: 1 return statement
+
+### Total Primitive Operations
 
 1. **Initialization:**
-   - `int n = x.length;` (1 operation)
-   - `double[] a = new double[n];` (1 operation)
-   - `double total = 0;` (1 operation)
+   - `n = len(x)`: 1 operation
+   - `a = [0] * n`: 1 + n operations (1 for list creation + n for list initialization)
 
-2. **Loop:**
-   - Initialization: `int j = 0;` (1 operation)
-   - Condition check `j < n` is executed \(n + 1\) times.
-   - Inside the loop: `total += x[j];` (executed \(n\) times)
-   - Inside the loop: `a[j] = total / (j + 1);` (executed \(n\) times)
-   - Update: `j++` (executed \(n\) times)
+2. **Outer Loop:**
+   - `for j in range(n)`: 0 comparisons (Python loop overhead, not counting each iteration)
+   - `total = 0`: n operations
 
-   Total: \(1 + 1 + 1 + (1 + n + 1) + n + n + n = 3 + 2n + 1 + 3n = 3n + 4\) operations
+3. **Inner Loop:**
+   - Runs \( \sum_{j=0}^{n-1} (j+1) = \frac{n(n+1)}{2} \) times:
+     - `total += x[i]`: \( \frac{n(n+1)}{2} \) operations (additions) + \( \frac{n(n+1)}{2} \) operations (list accesses)
+
+4. **Assignment and Division:**
+   - `a[j] = total / (j + 1)`: n divisions + n assignments
+
+5. **Return Statement:**
+   - `return a`: 1 operation
+
+### Summing Up
+
+- Initialization: \( 1 + 1 + n = n + 2 \)
+- Outer Loop: \( n \)
+- Inner Loop: \( \frac{n(n+1)}{2} \) additions + \( \frac{n(n+1)}{2} \) list accesses
+- Division and Assignment: \( n + n = 2n \)
+- Return: 1
+
+### Grand Total
+
+- Primitive operations: \( (n + 2) + n + \left( \frac{n(n+1)}{2} \right) + \left( \frac{n(n+1)}{2} \right) + 2n + 1 \)
+- Simplifying: \( 2n + 2 + \left( \frac{n(n+1)}{2} \right) + \left( \frac{n(n+1)}{2} \right) + 2n + 1 \)
+- Further simplification: \( 4n + 3 + n^2 + n \)
+- Final form: \( n^2 + 5n + 3 \)
+
+Thus, the total number of primitive operations for the `prefix_average1` function is \( n^2 + 5n + 3 \).
