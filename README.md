@@ -56,21 +56,23 @@ public class Main {
 
 **Describe the following Big O notations for algorithm runtimes:**
 
-**O(1) –** the algorithm has a constant execution time
+Sure! Here are the descriptions of the given Big O notations for algorithm runtimes:
 
-**O(n) -**
+**O(1)** – the algorithm has a constant execution time: The execution time of the algorithm remains constant, regardless of the size of the input data set.
 
-**O(logn) -**
+**O(n)** – the algorithm's execution time increases linearly with the size of the input: If the input size doubles, the execution time also doubles. This is common in simple loops that iterate over all elements.
 
-**O(nlogn) -**
+**O(logn)** – the algorithm's execution time increases logarithmically with the size of the input: The execution time grows slowly as the input size increases. This is typical in divide-and-conquer algorithms like binary search.
 
-**O(n^2) –**
+**O(nlogn)** – the algorithm's execution time increases in a manner proportional to n multiplied by log n: This is often seen in efficient sorting algorithms like mergesort and heapsort.
 
-**O(n^3) -**
+**O(n^2)** – the algorithm's execution time increases quadratically with the size of the input: If the input size doubles, the execution time increases by four times. This is common in algorithms with nested loops iterating over the data set, such as bubble sort and selection sort.
 
-**O(2^n) -**
+**O(n^3)** – the algorithm's execution time increases cubically with the size of the input: If the input size doubles, the execution time increases by eight times. This is seen in algorithms with three nested loops iterating over the data set, such as certain matrix multiplication algorithms.
 
-**O(n!) -**
+**O(2^n)** – the algorithm's execution time doubles with each additional element in the input data set: This represents exponential growth, where even small increases in the input size result in a dramatic increase in execution time. This is typical in recursive algorithms that solve problems by breaking them down into smaller subproblems, like the naive implementation of the Fibonacci sequence.
+
+**O(n!)** – the algorithm's execution time grows factorially with the size of the input: This is the most extreme case of growth, where the execution time increases extremely rapidly with the input size. This is seen in algorithms that generate all permutations of a set, such as the brute-force approach to the traveling salesman problem.
 
 ## Exercise 3: Big O Examples
 
@@ -82,34 +84,34 @@ Calculate **c** and **n<sub>0</sub>**<sub>.</sub>
 
 Do the same for the following functions:
 
-1.  15\*n -2
+1. 15\*n -2
 
-2.  7\*log n – 5
+2. 7\*log n – 5
 
-3.  10\* n<sup>3</sup> + 15\*n<sup>2</sup> -15
+3. 10\* n<sup>3</sup> + 15\*n<sup>2</sup> -15
 
-4.  2*n*<sup>4</sup> +7*n*<sup>3</sup>- 5*n*<sup>2</sup> + 2*n* - 7
+4. 2*n*<sup>4</sup> +7*n*<sup>3</sup>- 5*n*<sup>2</sup> + 2*n* - 7
 
 ## Exercise 4: Asymptotic Analysis and Big O notation
 
 **What is the growth rate for the following functions? Express it in
 terms of Big Oh notation:**
 
-1.  All the examples of exercise 1
+1. All the examples of exercise 1
 
-2.  1000\*n + 1
+2. 1000\*n + 1
 
-3.  n ( n-1000)
+3. n ( n-1000)
 
-4.  100\* (n-1)<sup>3</sup> - 10\*(n<sup>2</sup> -15) + 3n -10000
+4. 100\* (n-1)<sup>3</sup> - 10\*(n<sup>2</sup> -15) + 3n -10000
 
-5.  (n-10)\*(n+15) + 100000
+5. (n-10)\*(n+15) + 100000
 
-6.  2n+100log n
+6. 2n+100log n
 
-7.  3logn+2 is O(logn)
+7. 3logn+2 is O(logn)
 
-8.  20n3 +10nlog n+5 is O(n3)
+8. 20n3 +10nlog n+5 is O(n3)
 
 ## Exercise 5: Asymptotic growth rate
 
