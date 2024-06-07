@@ -77,3 +77,25 @@ def prefix_average2(x):
 - Return: 1
 
 Primitive operations: $(n + 3) + 3n + 1 = 4n + 4$
+
+## Exercise 2: Big O descriptions
+
+**Describe the following Big O notations for algorithm runtimes:**
+
+Sure! Here are the descriptions of the given Big O notations for algorithm runtimes:
+
+**O(1)** – the algorithm has a constant execution time: The execution time of the algorithm remains constant, regardless of the size of the input data set.
+
+**O(n)** – the algorithm's execution time increases linearly with the size of the input: If the input size doubles, the execution time also doubles. This is common in simple loops that iterate over all elements.
+
+**O(logn)** – the algorithm's execution time increases logarithmically with the size of the input: The execution time grows slowly as the input size increases. This is typical in divide-and-conquer algorithms like binary search.
+
+**O(nlogn)** – the algorithm's execution time increases in a manner proportional to n multiplied by log n: This is often seen in efficient sorting algorithms like mergesort and heapsort.
+
+**O(n^2)** – the algorithm's execution time increases quadratically with the size of the input: If the input size doubles, the execution time increases by four times. This is common in algorithms with nested loops iterating over the data set, such as bubble sort and selection sort.
+
+**O(n^3)** – the algorithm's execution time increases cubically with the size of the input: If the input size doubles, the execution time increases by eight times. This is seen in algorithms with three nested loops iterating over the data set, such as certain matrix multiplication algorithms.
+
+**O(2^n)** – the algorithm's execution time doubles with each additional element in the input data set: This represents exponential growth, where even small increases in the input size result in a dramatic increase in execution time. This is typical in recursive algorithms that solve problems by breaking them down into smaller subproblems, like the naive implementation of the Fibonacci sequence.
+
+**O(n!)** – the algorithm's execution time grows factorially with the size of the input: This is the most extreme case of growth, where the execution time increases extremely rapidly with the input size. This is seen in algorithms that generate all permutations of a set, such as the brute-force approach to the traveling salesman problem.
