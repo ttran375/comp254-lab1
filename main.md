@@ -97,3 +97,114 @@ Primitive operations: $(n + 3) + 3n + 1 = 4n + 4$
 **O(2^n)** – the algorithm's execution time doubles with each additional element in the input data set
 
 **O(n!)** – the algorithm's execution time grows factorially with the size of the input
+
+## Exercise 3: Big O Examples
+
+Recall the definition: f(n) \<= c\* g(n) for n \>=n<sub>0</sub>
+
+**Let** f(n) = 2\*n + 10.
+
+Calculate **c** and **n<sub>0</sub>**<sub>.</sub>
+
+Do the same for the following functions:
+
+1. 15\*n -2
+
+2. 7\*log n – 5
+
+3. 10\* n<sup>3</sup> + 15\*n<sup>2</sup> -15
+
+4. 2*n*<sup>4</sup> +7*n*<sup>3</sup>- 5*n*<sup>2</sup> + 2*n* - 7
+
+$$ f(n) \leq c \cdot g(n) \quad \text{for all} \quad n \geq n_0 $$
+
+### 1. $f(n) = 2n + 10$
+
+We need to find $c$ and $n_0$ such that:
+
+$$ 2n + 10 \leq c \cdot n $$
+
+For $n \geq n_0$, let's choose $n_0 = 10$.
+
+$$ 2n + 10 \leq c \cdot n $$
+$$ 2 + \frac{10}{n} \leq c $$
+
+When $n \geq 10$:
+
+$$ 2 + 1 \leq c $$
+$$ c \geq 3 $$
+
+Thus, $c = 3$ and $n_0 = 10$ are valid choices.
+
+### 2. $f(n) = 15n - 2$
+
+We need to find $c$ and $n_0$ such that:
+
+$$ 15n - 2 \leq c \cdot n $$
+
+For $n \geq n_0$, let's choose $n_0 = 1$.
+
+$$ 15n - 2 \leq c \cdot n $$
+$$ 15 - \frac{2}{n} \leq c $$
+
+When $n \geq 1$:
+
+$$ 15 - 2 \leq c $$
+$$ c \geq 13 $$
+
+Thus, $c = 15$ and $n_0 = 1$ are valid choices.
+
+### 3. $f(n) = 7 \log n - 5$
+
+We need to find $c$ and $n_0$ such that:
+
+$$ 7 \log n - 5 \leq c \log n $$
+
+For $n \geq n_0$, let's choose $n_0 = 1$.
+
+$$ 7 \log n - 5 \leq c \log n $$
+$$ 7 - \frac{5}{\log n} \leq c $$
+
+For $n \geq 10$:
+
+$$ 7 - \frac{5}{\log 10} \leq c $$
+$$ 7 - 2.17 \leq c $$
+$$ c \geq 4.83 $$
+
+Thus, $c = 7$ and $n_0 = 10$ are valid choices.
+
+### 4. $f(n) = 10n^3 + 15n^2 - 15$
+
+We need to find $c$ and $n_0$ such that:
+
+$$ 10n^3 + 15n^2 - 15 \leq c \cdot n^3 $$
+
+For $n \geq n_0$, let's choose $n_0 = 1$.
+
+$$ 10n^3 + 15n^2 - 15 \leq c \cdot n^3 $$
+$$ 10 + \frac{15}{n} - \frac{15}{n^3} \leq c $$
+
+When $n \geq 1$:
+
+$$ 10 + 15 - 15 \leq c $$
+$$ c \geq 10 $$
+
+Thus, $c = 10 + \frac{15}{n_0} - \frac{15}{n_0^3}$, which is approximately 25, so $c = 25$ and $n_0 = 1$ are valid choices.
+
+### 5. $f(n) = 2n^4 + 7n^3 - 5n^2 + 2n - 7$
+
+We need to find $c$ and $n_0$ such that:
+
+$$ 2n^4 + 7n^3 - 5n^2 + 2n - 7 \leq c \cdot n^4 $$
+
+For $n \geq n_0$, let's choose $n_0 = 1$.
+
+$$ 2n^4 + 7n^3 - 5n^2 + 2n - 7 \leq c \cdot n^4 $$
+$$ 2 + \frac{7}{n} - \frac{5}{n^2} + \frac{2}{n^3} - \frac{7}{n^4} \leq c $$
+
+When $n \geq 1$:
+
+$$ 2 + 7 - 5 + 2 - 7 \leq c $$
+$$ c \geq 2 $$
+
+Thus, $c = 2 + \frac{7}{n_0} - \frac{5}{n_0^2} + \frac{2}{n_0^3} - \frac{7}{n_0^4}$, which is approximately 15, so $c = 15$ and $n_0 = 1$ are valid choices.
